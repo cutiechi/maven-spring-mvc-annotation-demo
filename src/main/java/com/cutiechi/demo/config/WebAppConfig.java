@@ -10,7 +10,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 public class WebAppConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     /**
-     * Spring Application Context 配置
+     * 加载 Spring Application Context 配置
      *
      * {@link ApplicationContextConfig}
      */
@@ -19,13 +19,20 @@ public class WebAppConfig extends AbstractAnnotationConfigDispatcherServletIniti
         return new Class[]{ApplicationContextConfig.class};
     }
 
+    /**
+     * 加载 Spring MVC Dispatcher Servlet 配置类
+     * {@link DispatcherServletConfig}
+     */
     @Override
     protected Class<?>[] getServletConfigClasses () {
-        return new Class[0];
+        return new Class[]{DispatcherServletConfig.class};
     }
 
+    /**
+     * Dispatcher Servlet 的 Mapping 为 /
+     */
     @Override
     protected String[] getServletMappings () {
-        return new String[0];
+        return new String[]{"/"};
     }
 }
